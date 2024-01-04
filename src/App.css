@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+:root {
+  --main-bg-color: rgb(228, 228, 224);
+  --main-btn-color: rgb(237,	112,	45);
+  --light-btn-color: rgb(232, 175, 144);
+  --main-btn-hover-color: rgb(222, 88, 16);
+  --btn-text-color: rgb(116,71,0);
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  background-color: var(--main-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: stretch;
+  font-family: 'Work Sans', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--main-bg-color);
+
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner::after {
+  content: ' ';
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top: 4px solid var(--main-btn-color);
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+.spinnerDiv {
+  height: 100vh;
+}
+
+h1 {
+  padding-top: 2rem;
+  padding: 2rem 0rem;;
+  margin: 2rem 0rem 1rem;
+  text-align: left;
+  font-family: 'Bungee Spice', sans-serif;
+  cursor: pointer;
+}
+
+.inputForm {
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  }
+
+.inputForm input {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border-radius: 18px;
+  padding-left: 1.2rem;
+  border: 2px solid white;
+}
+
+.inputForm input:focus {
+  outline: none;
+  border: var(--main-btn-color) 2px solid;
+
+}
+
+.inputForm button {
+  border: none;
+  background: none;
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  background-color:var(--main-btn-color);
+  border-radius:18px;
+  color: white;
+  font-weight: 100;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+
+}
+
+.inputForm button:hover {
+  background-color: var(--main-btn-hover-color);
+}
+
+li {
+  list-style-type: none;
+  padding: 1rem;
+  margin: 1rem 2rem;
+  /* border: 2px solid var(--main-btn-color); */
+  border-radius: 8px;
+  background-color: rgb(251, 244, 234);
+}
+
+li:hover {
+  background-color: rgb(241, 232, 219);
+}
+
+li a {
+  color: var(--main-btn-color);
+  font-weight: bold;
+}
+
+.itemHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+li .dateInfo {
+  margin: 0;
+  color: var(--btn-text-color);
+  opacity: 0.6;
+}
+
+.resultsDiv {
+  min-height: 100vh;
+  align-self: stretch;
+
+}
+
+.newsItems {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: space-around;
+  padding-left: 0;
+  margin: 0;
+}
+
+.pageButtons {
+  text-align: right;
+  padding: 2rem 2rem 0rem;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.pageButtons p {
+  margin: 0;
+  padding: 0rem 0.2rem 0.4rem;
+  align-self: flex-end;
+}
+
+.pageButtons button {
+  padding: 0.3rem 0.7rem;
+  margin: 0.2rem;
+  min-height: 100%;
+  outline: none;
+  border: none;
+  background-color: rgb(251, 244, 234);
+  border: 2px solid var(--main-bg-color);
+  border-radius: 18px;
+  color: black;
+  text-transform: uppercase;
+  cursor: pointer;
+
+}
+
+.pageButtons button:hover {
+  background-color: var(--main-btn-color);
+}
+
+.pageButtons .activeNumBtn {
+  background-color: var(--main-btn-color);
+  color: white;
+}
+
+.pageButtons .activeNumBtn:hover {
+  background-color: var(--main-btn-color);
+}
+
+.pageButtons .numBtn  {
+  background: none;
+}
+
+.bottomBtns {
+  padding: 0rem 2rem 2rem;
+}
