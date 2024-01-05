@@ -12,19 +12,21 @@
 .App {
   text-align: center;
   height: 100vh;
-  background-color: var(--main-bg-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: stretch;
   font-family: 'Work Sans', sans-serif;
+  margin-bottom: 2rem;
 }
 
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--main-bg-color);
-
+  background-color: #e4e4e0;
+  opacity: 1;
+  background-image: radial-gradient(#ed702d 1.1px, #e4e4e0 1.1px);
+  background-size: 22px 22px;
 }
 
 .loading-spinner {
@@ -51,7 +53,7 @@ body {
 }
 
 .spinnerDiv {
-  height: 100vh;
+  height: 20vh;
 }
 
 h1 {
@@ -82,7 +84,11 @@ h1 {
 .inputForm input:focus {
   outline: none;
   border: var(--main-btn-color) 2px solid;
+}
 
+.inputForm input:hover {
+  transition: 1s;
+  border: var(--main-btn-color) 2px solid;
 }
 
 .inputForm button {
@@ -120,6 +126,7 @@ li:hover {
 li a {
   color: var(--main-btn-color);
   font-weight: bold;
+  width: 70%;
 }
 
 .itemHead {
@@ -137,6 +144,8 @@ li .dateInfo {
 .resultsDiv {
   min-height: 100vh;
   align-self: stretch;
+  align-items: center;
+  justify-content: center;
 
 }
 
@@ -151,11 +160,15 @@ li .dateInfo {
 
 .pageButtons {
   text-align: right;
-  padding: 2rem 2rem 0rem;
+  margin: 2rem 2rem 0rem;
   display: flex;
-  align-items: stretch;
   justify-content: flex-end;
   cursor: pointer;
+  padding: 0rem 0rem;
+  padding: 0.4rem;
+  border-radius: 8px;
+  background-color: rgb(251, 244, 234);
+  align-self: flex-end;
 }
 
 .pageButtons p {
@@ -165,13 +178,11 @@ li .dateInfo {
 }
 
 .pageButtons button {
-  padding: 0.3rem 0.7rem;
-  margin: 0.2rem;
-  min-height: 100%;
+  padding: 0.4rem 0.8rem;
+  margin: 0rem 0.2rem;
   outline: none;
   border: none;
   background-color: rgb(251, 244, 234);
-  border: 2px solid var(--main-bg-color);
   border-radius: 18px;
   color: black;
   text-transform: uppercase;
@@ -196,6 +207,13 @@ li .dateInfo {
   background: none;
 }
 
-.bottomBtns {
-  padding: 0rem 2rem 2rem;
+.numBtn {
+  padding: 0;
+  margin: 0;
 }
+
+.pageButtons.bottomBtns {
+  margin: 0rem 2rem;
+  margin-bottom: 2rem;
+}
+

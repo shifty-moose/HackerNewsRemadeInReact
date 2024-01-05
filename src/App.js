@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import NumBtnGen from './NumBtnGen';
 
 
 function App() {
@@ -22,33 +23,6 @@ function App() {
 
   // This is defining a state variable to check if the API managed to find results
   const [hasResults, setHasResults] = useState(false);
-
-  // Defining my useEffect hook to fetch the news articles from the API
-  useEffect(() => {
-
-    console.log(currentPage);
-
-    // This is the async function that will fetch the news articles from the API
-    const fetchNews = async () => {
-      setIsLoading(true);
-      try {
-        const page = currentPage;
-        const response = await fetch(`http://hn.algolia.com/api/v1/search?query=${searchSubmitted}&page=${page}`);
-        const data = await response.json(); //The Hacker News API returns an object with a hits property that contains an array of news articles.
-        setNews(data.hits);
-        console.log(data);  
-        data.nbHits > 0 ? setHasResults(true) : setHasResults(false);
-      } catch (error) {
-        console.log('Error fetching news articles: ', error);
-      }
-      setIsLoading(false);
-    };
-
-    // Now that I've declared the fetchNews function, I can call it here so that it renders with component mount of changes to the searchQuery state variable.
-    fetchNews();
-
-
-  }, [currentPage, searchSubmitted]); // This is the dependency array. It will run the useEffect hook when the searchQuery or currentPage state variable changes.
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -73,6 +47,35 @@ function App() {
     );
   };
 
+  // Defining my useEffect hook to fetch the news articles from the API
+  useEffect(() => {
+
+    console.log(currentPage);
+
+    // This is the async function that will fetch the news articles from the API
+    const fetchNews = async () => {
+      setIsLoading(true);
+      try {
+        const page = currentPage;
+        const response = await fetch(`http://hn.algolia.com/api/v1/search?query=${searchSubmitted}&page=${page}`);
+        const data = await response.json(); //The Hacker News API returns an object with a hits property that contains an array of news articles.
+        setNews(data.hits);
+        data.nbHits > 0 ? setHasResults(true) : setHasResults(false);
+      } catch (error) {
+        console.log('Error fetching news articles: ', error);
+      }
+      setIsLoading(false);
+    };
+
+    // Now that I've declared the fetchNews function, I can call it here so that it renders with component mount of changes to the searchQuery state variable.
+    fetchNews();
+
+
+  }, [currentPage, searchSubmitted]); // This is the dependency array. It will run the useEffect hook when the searchQuery or currentPage state variable changes.
+
+
+
+
   return (
     <div className="App">
 
@@ -92,7 +95,7 @@ function App() {
           className="submitBtn">Search</button>
       </form>
 
-      {isLoading ? (
+      {isLoading ? (  
         <div className="loading-spinner spinnerDiv">
         </div>
       ) : (
@@ -100,27 +103,11 @@ function App() {
         hasResults ? (
         <div className="resultsDiv">
 
-          <div className="pageButtons">
-            <button
-              onClick={() => setCurrentPage(currentPage - 1)}
-              disabled={currentPage === 0}>
-              Back
-            </button>
-              <button className="activeNumBtn">{currentPage + 1}</button> 
-              <button className="numBtn">{currentPage + 2}</button>
-              <button className="numBtn">{currentPage + 3}</button>
-              <p>. . .</p>
-
-              <button className="numBtn">{currentPage + 4}</button>
-
    
-
-            <button
-              onClick={() => setCurrentPage(currentPage + 1)}
-              disabled={news.length === 0}>
-              Next
-            </button>
-          </div>
+          <NumBtnGen
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage} 
+          />
 
           <ul className="newsItems">
             {news.map((item) => (
@@ -137,27 +124,11 @@ function App() {
             ))}
           </ul>
 
-          <div className="pageButtons bottomBtns">
-            <button
-              onClick={() => setCurrentPage(currentPage - 1)}
-              disabled={currentPage === 0}>
-              Back
-            </button>
-              <button className="activeNumBtn">{currentPage + 1}</button> 
-              <button className="numBtn">{currentPage + 2}</button>
-              <button className="numBtn">{currentPage + 3}</button>
-              <p>. . .</p>
-
-              <button className="numBtn">{currentPage + 4}</button>
-
-   
-
-            <button
-              onClick={() => setCurrentPage(currentPage + 1)}
-              disabled={news.length === 0}>
-              Next
-            </button>
-          </div>
+          <NumBtnGen
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          btmClass="bottomBtns" 
+          />
 
         </div> ) : (
           <p>No results found</p>
