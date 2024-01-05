@@ -50,8 +50,6 @@ function App() {
   // Defining my useEffect hook to fetch the news articles from the API
   useEffect(() => {
 
-    console.log(currentPage);
-
     // This is the async function that will fetch the news articles from the API
     const fetchNews = async () => {
       setIsLoading(true);
@@ -96,7 +94,13 @@ function App() {
       </form>
 
       {isLoading ? (  
-        <div className="loading-spinner spinnerDiv">
+        <div className="spinnerDiv">
+          <NumBtnGen
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage} 
+          />
+          <div className="loading-spinner">
+          </div>
         </div>
       ) : (
 
