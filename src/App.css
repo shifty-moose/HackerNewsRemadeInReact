@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+.material-symbols-outlined {
+  font-size: 1rem;
+  padding-left: 4px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
 
 :root {
   --main-bg-color: rgb(228, 228, 224);
@@ -138,6 +147,16 @@ li a {
   align-items: flex-start;
 }
 
+.itemInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comments {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 li .dateInfo {
   margin: 0;
   color: var(--btn-text-color);
@@ -218,4 +237,10 @@ li .dateInfo {
 .pageButtons.bottomBtns {
   margin: 0rem 2rem;
   margin-bottom: 2rem;
+}
+
+.comments {
+  text-decoration: none;
+  color: black;
+  font-weight: 100;
 }

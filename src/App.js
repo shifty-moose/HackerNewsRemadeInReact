@@ -73,7 +73,7 @@ function App() {
 
 
 
-
+  console.log(news);
   return (
     <div className="App">
 
@@ -122,8 +122,12 @@ function App() {
                 </div>
                 <div className="itemInfo">
                   <p>Points: {item.points}</p>
-                  <p>Author: {item.author}</p>
+                  <p>By {item.author}</p>
                 </div>
+                <a href={`https://news.ycombinator.com/item?id=${item.objectID}`} target="_blank" rel="noopener noreferrer" className="comments">
+                  Comments: {item.num_comments} <span className="material-symbols-outlined">                  
+                  output
+                  </span></a>
               </li>
             ))}
           </ul>
